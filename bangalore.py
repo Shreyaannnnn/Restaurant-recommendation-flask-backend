@@ -50,11 +50,17 @@ def remove_slash(x):
         return x.replace('/5', '').strip()
     return x  # Return x as is if it's not a string
 
+# Ensure 'rate' column is of string type
+data['rate'] = data['rate'].astype(str)
+
 # Apply the function to the 'rate' column
 data['rate'] = data['rate'].apply(remove_slash).str.strip()
 
-# Convert to float and handle conversion errors
+# Convert to float, handle conversion errors
 data['rate'] = pd.to_numeric(data['rate'], errors='coerce')  # Convert to float, set errors='coerce' to handle non-convertible values
+
+# Drop rows with NaN in 'rate' column after conversion
+data = data.dropna(subset=['rate'])
 
 
 data.head()
