@@ -28,6 +28,8 @@ with open(os.path.join(current_directory, 'model_functions_delhi.pkl'), 'rb') as
 app = Flask(__name__)
 CORS(app)
 
+
+
 @app.route('/get_recommendationsRating', methods=['POST'])
 def get_recommendationsRating():
     user_data = request.json['user_data']  # Assuming user data is sent as JSON
@@ -167,7 +169,8 @@ def get_recommendationsCostDelhi():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
 
 
