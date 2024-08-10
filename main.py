@@ -4,10 +4,10 @@ from flask import Flask, request, jsonify
 # from bangalore import recommend_by_cost
 # from bangalore import recommend_by_cuisine
 # from bangalore import recommend_like
-from delhi import recommend_by_mean_rating
-from delhi import recommend_by_cost
-from delhi import recommend_by_cuisine
-from delhi import recommend_like
+# from delhi import recommend_by_mean_rating
+# from delhi import recommend_by_cost
+# from delhi import recommend_by_cuisine
+# from delhi import recommend_like
 from flask_cors import CORS
 import os
 import json
