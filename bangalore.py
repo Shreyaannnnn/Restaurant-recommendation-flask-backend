@@ -96,7 +96,7 @@ data[['reviews_list', 'cuisines']].head()
 # RESTAURANT NAMES:
 list(data['name'].unique())
 data.head()
-data=data.drop(['address','rest_type', 'type', 'menu_item', 'votes'],axis=1)
+data=data.drop(['address','rest_type', 'type', 'menu_item', 'votes'],axis=1, errors='ignore')
 
 
 
