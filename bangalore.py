@@ -16,7 +16,7 @@ current_directory = os.path.dirname(os.path.abspath(__file__))
 # data = pd.read_csv("C:/Users/shreyan/Downloads/restaurant/ml/zomato.csv") Bangalore_Dataset.xlsx
 # data = pd.read_csv(os.path.join(current_directory, 'zomato.csv'))
 
-data = pd.read_csv(os.path.join(current_directory, 'Bangalore_Dataset.xlsx'))
+data = pd.read_csv(os.path.join(current_directory, 'Bangalore_Dataset.csv'))
 
 
 
