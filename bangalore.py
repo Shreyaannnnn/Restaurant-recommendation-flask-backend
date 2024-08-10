@@ -41,8 +41,22 @@ data['cost'] = data['cost'].astype(str)
 data['cost'] = data['cost'].str.replace(',', '').astype(float)
 data = data.loc[data.rate !='NEW']
 data = data.loc[data.rate !='-'].reset_index(drop=True)
-remove_slash = lambda x: x.replace('/5', '')
-data.rate = data.rate.apply(remove_slash).str.strip().astype('float')
+# remove_slash = lambda x: x.replace('/5', '')
+# data.rate = data.rate.apply(remove_slash).str.strip().astype('float')
+
+# Define a function to handle the replacement
+def remove_slash(x):
+    if isinstance(x, str):  # Check if x is a string
+        return x.replace('/5', '').strip()
+    return x  # Return x as is if it's not a string
+
+# Apply the function to the 'rate' column
+data['rate'] = data['rate'].apply(remove_slash).str.strip()
+
+# Convert to float and handle conversion errors
+data['rate'] = pd.to_numeric(data['rate'], errors='coerce')  # Convert to float, set errors='coerce' to handle non-convertible values
+
+
 data.head()
 data.name = data.name.apply(lambda x:x.title())
 data.online_order.replace(('Yes','No'),(True, False),inplace=True)
